@@ -1,0 +1,85 @@
+server:
+  port: 8123
+  servlet:
+    context-path: /api
+  reactive:
+    session:
+      timeout: 259200
+spring:
+  application:
+    name: yu-picture-backend
+  #数据库配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://113.44.209.173:3306/zh_picture
+    username: zh_picture_root
+    password: 200429
+  #springmvc 中multipartFile上传文件相关配置
+  servlet:
+    multipart:
+      max-file-size: 10MB
+  #redis配置
+  redis:
+    host: 113.44.209.173
+    database: 0
+    port: 6379
+    timeout: 5000
+    password: 200429
+  session:
+    #存储方式
+    store-type: redis
+    #过期时间
+    timeout: 84600
+
+#mybatis配置
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: false
+    #仅在开发环境中打印日志
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      logic-delete-field: isDelete
+      logic-not-delete-value: 0
+      logic-delete-value: 1
+
+#knife4j配置文档
+knife4j:
+  enable: true
+  openapi:
+    description: 智能云图库项目接口文档
+    title: 智能云图库项目接口文档
+    email: 249628024@qq.com
+    concat: 隔天
+    version: v1.0
+    group:
+      default:
+        api-rule: package
+        api-rule-resources:
+          - com.yupi.yupicturebackend.controller
+  basic:
+    enable: true
+    username: root
+    password: 200429
+cos:
+  client:
+    host: https://getian1-1343102113.cos.ap-beijing.myqcloud.com
+    secretId: AKIDD6pMfleJqDOODrJXZQuELG0azDG7kCTX
+    secretKey: wiKDwTq33sWxAE6lDRWPq57zhCUbVBew
+    cosRegion: ap-beijing
+    bucket: getian1-1343102113
+
+
+# 阿里云 AI 配置
+aliYunAi:
+  apiKey: sk-dd15e01e499243d8ade2f87e35ed929c
+  cloud:
+    access_key_id: LTAI5tP8o1uopzqNEdXm22vK
+    access_key_secret: pdKjcfd04KP7fFnwOsQpv13Y5l2Tvj
+    sign_name: '朝花夕拾'
+    template_code: 'SMS_480165002'
+    endpoint: 'dysmsapi.aliyuncs.com'
+
+#高德api配置
+gaode:
+  key: 1981bdac63c0af4ac0eed6bb08d22a5e
